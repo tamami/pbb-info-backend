@@ -19,14 +19,15 @@ public class ApiController {
     private SpptRepo spptRepo;
 
     @RequestMapping("api/sppt")
-    public Observable<Sppt[]> getDaftarSppt(@RequestParam("nop") String nop) {
+    public List<Sppt> getDaftarSppt(@RequestParam("nop") String nop) {
         System.out.println("nop : " + nop);
-        System.out.println("kd Propinsi : " + nop.substring(0,2));
+        System.out.println("kd Propinsi : " + nop.substring(0,2)); 
 
         
         return spptRepo.findByKdPropinsiAndKdDati2AndKdKecamatanAndKdKelurahanAndKdBlokAndNoUrutAndKdJnsOp(
             nop.substring(0,2), nop.substring(2,4), nop.substring(4,7), nop.substring(7,10), 
             nop.substring(10,13), nop.substring(13,17), nop.substring(17,18));
+        
     }
 
 }
